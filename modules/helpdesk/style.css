@@ -1,0 +1,123 @@
+.helpdesk {
+  overflow: visible !important;
+}
+.helpdesk h2,
+.helpdesk h3 {
+  padding: 0 10px;
+}
+.helpdesk h3 {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-shadow: none;
+  position: relative;
+}
+.helpdesk h3:before {
+  content: attr(title);
+  margin: 0 5px 0 -19px;
+  padding: 0 10px 0 15px;
+  background-color: var(--bg-color);
+  color: #FFF;
+  border-radius: 0 5px 5px 0;
+  text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+}
+.helpdesk h3:after {
+  content: '';
+  position: absolute;
+  left: -9px;
+  top: 2rem;
+  border-style: solid;
+  border-width: 0 9px 9px 0;
+  border-color: transparent var(--bg-color) transparent transparent;
+  filter: brightness(60%);
+}
+.helpdesk header {
+  border-bottom-style: solid;
+  box-shadow: none;
+  padding: 0 0 5px;
+}
+.helpdesk footer,
+.helpdesk header {
+  background-color: var(--header-background-color);
+}
+.helpdesk .detail {
+  padding: 10px;
+}
+.helpdesk .files {
+  margin: 10px -5px 0;
+}
+.helpdesk footer {
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-top-style: solid;
+}
+h2 > mark {
+  margin-left: 10px;
+  font-size: 1.1rem;
+  vertical-align: middle;
+}
+.helpdesk [data-letters]:before,
+.helpdesk .usericon img {
+  border-radius: 50em;
+  width: 50px;
+  height: 50px;
+}
+.helpdesk [data-letters]:before {
+  content: attr(data-letters);
+  background-color: #512DA8;
+  color: #FFF;
+  text-transform: uppercase;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  font-size: 25px;
+  vertical-align: middle;
+}
+.helpdesk small,
+.helpdesk mark,
+.helpdesk .subject span {
+  font-size: 0.8rem;
+}
+.helpdesk footer span {
+  white-space: nowrap;
+  float: left;
+  margin-right: 10px;
+}
+.helpdesk .subject span {
+  margin-right: 10px;
+}
+.helpdesk .subject {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.helpdesk .subject div.usericon {
+  flex: 0 0 60px;
+  min-width: auto;
+  max-width: 60px;
+}
+.helpdesk th,
+.helpdesk td {
+  line-height: 1.6;
+}
+.helpdesk .priority {
+  color: var(--bg-color);
+}
+.helpdesk .priority::before {
+  content: '';
+  background-color: var(--bg-color);
+  width: 0.8rem;
+  height: 0.8rem;
+  display: inline-block;
+  border-radius: 50em;
+  margin-right: 5px;
+}
+.reopen {
+  margin: 20px 0;
+  text-align: center;
+}
+@media only screen and (max-width: 600px) {
+  .helpdesk .subject {
+    flex-wrap: wrap;
+  }
+}

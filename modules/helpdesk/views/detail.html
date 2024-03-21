@@ -1,0 +1,21 @@
+<section class="setup_frm helpdesk">
+  <header>
+    <h2 class="icon-file">{LNG_Ticket} <span class=no>#%TICKET_NO%</span></h2>
+    <h3 style="--bg-color:%STATUS_COLOR%" title="%STATUS%">%SUBJECT%</h3>
+  </header>
+  <div class="detail">
+    %DETAIL%
+    <div class="files">%FILES%</div>
+  </div>
+  <footer class="clear">
+    <span class=icon-calendar>%CREATE_DATE%</span>
+    <span class="icon-user status%USER_STATUS%">%NAME%</span>
+    <span class=icon-subcategory>%CATEGORY%</span>
+    <span class=priority style="--bg-color:%PRIORITY_COLOR%">%PRIORITY%</span>
+  </footer>
+</section>
+%REPLYS%
+%REPLYFORM%
+<script>
+  initHelpdeskDetail("reopen_%ID%");
+</script>
