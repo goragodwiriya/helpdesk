@@ -1,0 +1,77 @@
+<aside data-component="sidebar"></aside>
+<div class="main-content">
+  <div>
+    <header data-component="topbar"></header>
+    <main class="content">
+      <form data-form="helpdeskReceive" action="api/helpdesk/receive/save" method="post" data-ajax-submit="true"
+            data-load-api="api/helpdesk/receive/get" data-load-query-params="true"
+            autocomplete="off" enctype="multipart/form-data">
+        <div class="card-groups">
+          <header>
+            <div>
+              <h1 class="icon-write" data-i18n>{LNG_Create ticket}</h1>
+              <p data-i18n>{LNG_Describe your problem so that our staff can help you}</p>
+            </div>
+            <div>
+              <a class="btn btn-secondary icon-back" href="/helpdesk" data-i18n>{LNG_My tickets}</a>
+            </div>
+          </header>
+          <div class="content-body">
+            <fieldset>
+              <legend class="icon-support" data-i18n>{LNG_Ticket}</legend>
+              <div class="form-group">
+                <div class="width50">
+                  <label for="helpdesk_category" data-i18n>{LNG_Category}</label>
+                  <span class="form-control icon-subcategory">
+                    <select id="helpdesk_category" name="category" data-options-key="category" data-attr="value:category" required></select>
+                  </span>
+                </div>
+                <div class="width50">
+                  <label for="helpdesk_priority" data-i18n>{LNG_Priority}</label>
+                  <span class="form-control icon-star0">
+                    <select id="helpdesk_priority" name="priority" data-options-key="priority" data-attr="value:priority" required></select>
+                  </span>
+                </div>
+              </div>
+              <div>
+                <label for="helpdesk_subject" data-i18n>{LNG_Subject}</label>
+                <span class="form-control icon-edit">
+                  <input type="text" id="helpdesk_subject" name="subject" data-attr="value:subject" maxlength="150" required>
+                </span>
+              </div>
+              <div>
+                <label for="helpdesk_detail" data-i18n>{LNG_Description}</label>
+                <span class="form-control icon-file">
+                  <textarea id="helpdesk_detail" name="detail" rows="6" placeholder="{LNG_BBCode support}" data-text="detail" required></textarea>
+                </span>
+              </div>
+              <div data-if="can_manage == 1">
+                <label for="helpdesk_due" data-i18n>{LNG_Due Date}</label>
+                <span class="form-control icon-calendar">
+                  <input type="date" id="helpdesk_due" name="due_date" data-attr="value:due_date">
+                </span>
+                <div class="comment" data-i18n>{LNG_Leave blank if no deadline is set}</div>
+              </div>
+              <div>
+                <label for="helpdesk_attach" data-i18n>{LNG_Attach file}</label>
+                <span class="form-control">
+                  <input type="file" id="helpdesk_attach" name="helpdesk[]" multiple data-files="attachments" data-preview="true"
+                         data-allow-remove-existing="true" data-action-url="api/helpdesk/receive/removefile"
+                         data-action-params="id" data-file-reference="url" data-attr="accept:accept">
+                </span>
+                <div class="comment" data-text="'{LNG_Browse image uploaded, type} ' + file_types + ' ({LNG_You can select multiple files}, {LNG_resized automatically})'" data-i18n></div>
+              </div>
+            </fieldset>
+            <fieldset class="submit">
+              <button type="submit" class="btn btn-primary icon-save" data-i18n>{LNG_Save}</button>
+              <input type="hidden" name="id" data-attr="value:id">
+            </fieldset>
+          </div>
+        </div>
+      </form>
+    </main>
+  </div>
+  <footer class="footer">
+    <p class="center">&copy; 2026 Now.js - <a href="https://nowjs.net">nowjs.net</a></p>
+  </footer>
+</div>

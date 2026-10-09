@@ -1,0 +1,194 @@
+/**
+ * modules/helpdesk/styles.css
+ *
+ * ทุกคลาสขึ้นต้นด้วย helpdesk- เพื่อไม่ให้ชนกับ core หรือโมดูลอื่น
+ */
+/* ---------- คอลัมน์หัวเรื่องในตาราง ---------- */
+.helpdesk-subject {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: var(--space-2, 8px);
+  text-align: left;
+}
+.helpdesk-subject > div:last-child {
+  min-width: 0;
+}
+.helpdesk-usericon {
+  flex: 0 0 48px;
+  max-width: 48px;
+}
+.helpdesk-usericon img,
+.helpdesk-usericon [data-letters]:before {
+  border-radius: 50em;
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+}
+.helpdesk-usericon [data-letters]:before {
+  content: attr(data-letters);
+  background-color: #512da8;
+  color: #fff;
+  text-transform: uppercase;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  font-size: 1.4rem;
+  vertical-align: middle;
+}
+.helpdesk-subject-head {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+.helpdesk-no {
+  font-weight: 600;
+  opacity: 0.7;
+}
+.helpdesk-subject-link {
+  display: block;
+  font-weight: 600;
+  line-height: 1.5;
+}
+/* ---------- แถวข้อมูลย่อย ---------- */
+.helpdesk-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1, 4px) var(--space-3, 12px);
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+.helpdesk-priority {
+  color: var(--bg-color, #666);
+  white-space: nowrap;
+}
+.helpdesk-priority::before {
+  content: '';
+  background-color: var(--bg-color, #666);
+  width: 0.7rem;
+  height: 0.7rem;
+  display: inline-block;
+  border-radius: 50em;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.helpdesk-overdue {
+  color: #d32f2f;
+  font-weight: 600;
+}
+.helpdesk-status {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 11px;
+  color: #fff;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+.helpdesk-latest {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: 3px;
+}
+.helpdesk-table td {
+  line-height: 1.6;
+}
+/* ---------- การ์ดของหน้ารายละเอียด ---------- */
+.helpdesk-card {
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: var(--radius-md, 6px);
+  margin-bottom: var(--space-4, 16px);
+  overflow: hidden;
+  background: var(--bg-card, #fff);
+}
+.helpdesk-card-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3, 12px);
+  padding: var(--space-3, 12px);
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+  border-left: 4px solid var(--bg-color, #666);
+}
+.helpdesk-card-head h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+.helpdesk-detail {
+  padding: var(--space-3, 12px);
+  line-height: 1.8;
+  word-break: break-word;
+}
+.helpdesk-card > .helpdesk-meta {
+  padding: var(--space-2, 8px) var(--space-3, 12px);
+  border-top: 1px solid var(--border-color, #e0e0e0);
+}
+.helpdesk-reply {
+  margin-left: 0;
+}
+.helpdesk-reply.is-agent {
+  border-left: 4px solid var(--color-primary, #2563eb);
+}
+/* ---------- ไฟล์แนบ ---------- */
+.helpdesk-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2, 8px);
+  padding: 0 var(--space-3, 12px) var(--space-3, 12px);
+}
+.helpdesk-files:empty {
+  display: none;
+}
+.helpdesk-file img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: var(--radius-sm, 4px);
+  border: 1px solid var(--border-color, #e0e0e0);
+}
+.helpdesk-file-ext {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 110px;
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: var(--radius-sm, 4px);
+  font-size: 0.8rem;
+  padding: var(--space-2, 8px);
+  text-align: center;
+  word-break: break-all;
+}
+/* ---------- หน้าแรก ---------- */
+.stat-card::before {
+  background: var(--bg-color);
+}
+.helpdesk-stat-0 .icon-warning:before,
+.helpdesk-stat-0 {
+  color: #d32f2f;
+}
+.helpdesk-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2, 8px);
+}
+/* ---------- youtube ที่มาจาก BBCode ---------- */
+.helpdesk-detail .youtube {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 640px;
+}
+.helpdesk-detail .youtube iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+@media only screen and (max-width: 600px) {
+  .helpdesk-subject {
+    flex-wrap: wrap;
+  }
+}

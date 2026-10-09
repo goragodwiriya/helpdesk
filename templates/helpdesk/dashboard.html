@@ -1,0 +1,69 @@
+<aside data-component="sidebar"></aside>
+<div class="main-content">
+  <div>
+    <header data-component="topbar"></header>
+    <main class="content">
+      <div class="card-groups" data-component="api" data-endpoint="api/helpdesk/dashboard/get">
+        <header>
+          <div>
+            <h1 class="icon-support" data-i18n>{LNG_Helpdesk}</h1>
+            <p data-i18n>{LNG_Overview of your tickets}</p>
+          </div>
+          <div class="flex middle gap-2">
+            <span data-i18n>Create ticket</span>
+            <span class="flex middle gap-2 wrap" data-for="item in data.shortcuts">
+              <template>
+                <a class="btn btn-primary" data-attr="href:item.url" title="{LNG_Create ticket}"><span class="icon-new" data-text="item.topic"></span></a>
+              </template>
+            </span>
+          </div>
+        </header>
+        <div class="content-body">
+          <!-- Ticket ของฉัน -->
+          <section>
+            <h2 class="icon-list" data-i18n>{LNG_My tickets}</h2>
+            <div class="ggrid" data-for="card in data.mine">
+              <template>
+                <div class="block3 large6 stat-card helpdesk-stat" data-attr="style:'--bg-color:' + card.color">
+                  <div class="stat-header icon-support">
+                    <div class="stat-title" data-text="card.topic"></div>
+                  </div>
+                  <div class="stat-value" data-text="card.count"></div>
+                  <div class="stat-change">
+                    <a data-attr="href:card.url" data-i18n>{LNG_My tickets}</a>
+                  </div>
+                </div>
+              </template>
+            </div>
+            <p class="center" data-if="data.mine_total == 0" data-i18n>{LNG_No data available}</p>
+          </section>
+          <!-- Ticket ที่ต้องดูแล -->
+          <section data-if="data.is_agent == 1">
+            <h2 class="icon-customer" data-i18n>{LNG_Tickets} ({LNG_Agent})</h2>
+            <div class="ggrid" data-for="card in data.agent">
+              <template>
+                <div class="block3 large6 stat-card" data-class="'helpdesk-stat-' + card.status" data-attr="style:'--bg-color:' + card.color">
+                  <div class="stat-header" data-class="card.icon">
+                    <div class="stat-title" data-text="card.topic"></div>
+                  </div>
+                  <div class="stat-value" data-text="card.count"></div>
+                  <div class="stat-change">
+                    <a data-attr="href:card.url" data-i18n>{LNG_Tickets}</a>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </section>
+          <!-- กราฟ Ticket รายเดือน -->
+          <section data-if="data.is_agent == 1">
+            <h2 class="icon-stats" data-i18n>{LNG_Tickets}</h2>
+            <div style="height:340px" data-component="graph" data-type="bar" data-url="api/helpdesk/dashboard/graph"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="footer">
+    <p class="center">&copy; 2026 Now.js - <a href="https://nowjs.net">nowjs.net</a></p>
+  </footer>
+</div>

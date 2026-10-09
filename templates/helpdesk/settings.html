@@ -1,0 +1,101 @@
+<aside data-component="sidebar"></aside>
+<div class="main-content">
+  <div>
+    <header data-component="topbar"></header>
+    <main class="content">
+      <form data-form="helpdeskSettings" action="api/helpdesk/settings/save" method="post" data-ajax-submit="true" data-load-api="api/helpdesk/settings/get" autocomplete="off">
+        <div class="card-groups">
+          <header>
+            <div>
+              <h1 class="icon-cog" data-i18n>{LNG_Module settings} {LNG_Helpdesk}</h1>
+              <p data-i18n>{LNG_Helpdesk}</p>
+            </div>
+          </header>
+          <div class="content-body">
+            <fieldset>
+              <legend class="icon-star0" data-i18n>{LNG_Status}</legend>
+              <div>
+                <label for="set_first" data-i18n>{LNG_Initial ticket status}</label>
+                <span class="form-control icon-star0">
+                  <select id="set_first" name="helpdesk_first_status" data-options-key="helpdesk_first_status" data-attr="value:helpdesk_first_status"></select>
+                </span>
+              </div>
+              <div>
+                <label for="set_closed" data-i18n>{LNG_Ticket status finished}</label>
+                <span class="form-control icon-star0">
+                  <select id="set_closed" name="helpdesk_closed_status" data-options-key="helpdesk_closed_status" data-attr="value:helpdesk_closed_status"></select>
+                </span>
+              </div>
+              <div>
+                <label for="set_reopened" data-i18n>{LNG_Reopened ticket status}</label>
+                <span class="form-control icon-star0">
+                  <select id="set_reopened" name="helpdesk_reopened_status" data-options-key="helpdesk_reopened_status" data-attr="value:helpdesk_reopened_status"></select>
+                </span>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend class="icon-number" data-i18n>{LNG_Ticket No.}</legend>
+              <div class="form-group">
+                <div class="width50">
+                  <label for="set_prefix" data-i18n>{LNG_Prefix}</label>
+                  <span class="form-control icon-number">
+                    <input type="text" id="set_prefix" name="helpdesk_prefix" data-attr="value:helpdesk_prefix" placeholder="TICKET%Y%M-" maxlength="50">
+                  </span>
+                </div>
+                <div class="width50">
+                  <label for="set_no" data-i18n>{LNG_Ticket No.}</label>
+                  <span class="form-control icon-number">
+                    <input type="text" id="set_no" name="helpdesk_no" data-attr="value:helpdesk_no" placeholder="%04d" maxlength="50">
+                  </span>
+                </div>
+              </div>
+              <div class="comment" data-i18n>{LNG_Prefix, if changed The number will be counted again. You can enter %Y%M (year, month).}, {LNG_Number such as %04d (%04d means 4
+                digits, maximum 11 digits)}</div>
+            </fieldset>
+            <fieldset>
+              <legend class="icon-thumbnail" data-i18n>{LNG_Attach file}</legend>
+              <div class="form-group">
+                <div class="width50">
+                  <label for="set_w" data-i18n>{LNG_Width}</label>
+                  <span class="form-control icon-width">
+                    <input type="number" id="set_w" name="helpdesk_w" data-attr="value:helpdesk_w" min="100" max="4000" step="10">
+                  </span>
+                  <div class="comment" data-i18n>{LNG_Image size is in pixels} ({LNG_resized automatically})</div>
+                </div>
+                <div class="width50">
+                  <label for="set_sla" data-i18n>{LNG_Due Date}</label>
+                  <span class="form-control icon-calendar">
+                    <input type="number" id="set_sla" name="helpdesk_sla_days" data-attr="value:helpdesk_sla_days" min="0" max="365">
+                  </span>
+                  <div class="comment" data-i18n>{LNG_Number of days to close a ticket, 0 means no deadline}</div>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend class="icon-email" data-i18n>{LNG_Email}</legend>
+              <div>
+                <label for="set_mail_user" data-i18n>{LNG_Message} ({LNG_Customer})</label>
+                <span class="form-control icon-comments">
+                  <textarea id="set_mail_user" name="helpdesk_mail_user" rows="2" data-text="helpdesk_mail_user"></textarea>
+                </span>
+              </div>
+              <div>
+                <label for="set_mail_agent" data-i18n>{LNG_Message} ({LNG_Agent})</label>
+                <span class="form-control icon-comments">
+                  <textarea id="set_mail_agent" name="helpdesk_mail_agent" rows="2" data-text="helpdesk_mail_agent"></textarea>
+                </span>
+              </div>
+              <div class="comment" data-i18n>{LNG_Introduction text in the notification email, leave blank to use the default text}</div>
+            </fieldset>
+            <fieldset class="submit">
+              <button type="submit" class="btn btn-primary icon-save" data-i18n>{LNG_Save}</button>
+            </fieldset>
+          </div>
+        </div>
+      </form>
+    </main>
+  </div>
+  <footer class="footer">
+    <p class="center">&copy; 2026 Now.js - <a href="https://nowjs.net">nowjs.net</a></p>
+  </footer>
+</div>

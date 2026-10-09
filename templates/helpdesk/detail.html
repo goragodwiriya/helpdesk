@@ -1,0 +1,140 @@
+<aside data-component="sidebar"></aside>
+<div class="main-content">
+  <div>
+    <header data-component="topbar"></header>
+    <main class="content">
+      <form data-form="helpdeskReply" action="api/helpdesk/detail/reply" method="post" data-ajax-submit="true"
+            data-load-api="api/helpdesk/detail/get" data-load-query-params="true" data-validate="false"
+            autocomplete="off" enctype="multipart/form-data">
+        <div class="card-groups">
+          <header>
+            <div>
+              <h1 class="icon-file" data-text="'{LNG_Ticket} #' + ticket_no" data-i18n></h1>
+              <p data-text="subject"></p>
+            </div>
+            <div>
+              <a class="btn btn-secondary icon-edit" data-if="can_edit == 1" data-attr="href:'/helpdesk-receive?id=' + id" data-i18n>{LNG_Edit}</a>
+              <a class="btn btn-secondary icon-back" href="/helpdesk" data-i18n>{LNG_My tickets}</a>
+            </div>
+          </header>
+          <div class="content-body">
+
+            <!-- หัวเรื่องของ Ticket -->
+            <section class="helpdesk-card">
+              <div class="helpdesk-card-head" data-attr="style:'--bg-color:' + status_color">
+                <span class="helpdesk-status" data-attr="style:'background-color:' + status_color" data-text="status_text"></span>
+                <h2 data-text="subject"></h2>
+              </div>
+              <div class="helpdesk-detail" data-html="detail"></div>
+              <div class="helpdesk-files" data-for="file in files">
+                <template>
+                  <a class="helpdesk-file" target="_blank" rel="noopener" data-attr="href:file.url; title:file.name">
+                    <img data-if="file.is_image == 1" data-attr="src:file.url; alt:file.name">
+                    <span data-if="file.is_image != 1" class="helpdesk-file-ext" data-text="file.name"></span>
+                  </a>
+                </template>
+              </div>
+              <footer class="helpdesk-meta">
+                <span class="icon-calendar" data-text="created_text"></span>
+                <span class="icon-clock" data-text="time_ago" data-i18n></span>
+                <span class="icon-user" data-text="customer"></span>
+                <span class="icon-phone" data-if="customer_phone != ''" data-text="customer_phone"></span>
+                <span class="icon-subcategory" data-text="category_text"></span>
+                <span class="helpdesk-priority" data-attr="style:'--bg-color:' + priority_color" data-text="priority_text"></span>
+                <span class="icon-customer" data-text="agent"></span>
+                <span class="helpdesk-overdue icon-clock" data-if="is_overdue == 1" data-text="'{LNG_Overdue} ' + due_text" data-i18n></span>
+              </footer>
+            </section>
+
+            <!-- ประวัติการตอบกลับ -->
+            <section class="helpdesk-replies" data-for="reply in replies">
+              <template>
+                <article class="helpdesk-card helpdesk-reply" data-class="reply.is_agent == 1 ? 'helpdesk-card helpdesk-reply is-agent' : 'helpdesk-card helpdesk-reply'">
+                  <div class="helpdesk-detail" data-html="reply.comment"></div>
+                  <div class="helpdesk-files" data-for="file in reply.files">
+                    <template>
+                      <a class="helpdesk-file" target="_blank" rel="noopener" data-attr="href:file.url; title:file.name">
+                        <img data-if="file.is_image == 1" data-attr="src:file.url; alt:file.name">
+                        <span data-if="file.is_image != 1" class="helpdesk-file-ext" data-text="file.name"></span>
+                      </a>
+                    </template>
+                  </div>
+                  <footer class="helpdesk-meta">
+                    <span class="icon-calendar" data-text="reply.created_text"></span>
+                    <span data-class="reply.is_agent == 1 ? 'icon-customer' : 'icon-user'" data-text="reply.name"></span>
+                    <span class="icon-valid color-green" data-if="reply.is_private == 1" data-i18n>{LNG_Private}</span>
+                    <button type="button" class="btn btn-danger icon-delete notext" data-if="reply.can_delete == 1"
+                            data-action="click.prevent:requestApi" data-api-url="api/helpdesk/detail/action" data-api-method="post"
+                            data-param-action="delete" data-attr="data-param-id:reply.id; data-param-helpdesk-id:reply.helpdesk_id"
+                            data-confirm="You want to delete ?" title="{LNG_Delete}"></button>
+                  </footer>
+                </article>
+              </template>
+            </section>
+
+            <!-- Ticket ปิดแล้ว: ปุ่มเปิดใหม่ -->
+            <fieldset data-if="is_closed == 1" class="submit center">
+              <button type="button" class="btn btn-warning icon-support large"
+                      data-action="click.prevent:requestApi" data-api-url="api/helpdesk/jobs/action" data-api-method="post"
+                      data-param-action="reopen" data-attr="data-param-id:id"
+                      data-confirm="Do you want to reopen this ticket ?" data-i18n>{LNG_Reopen Ticket}</button>
+            </fieldset>
+
+            <!-- ฟอร์มตอบกลับ -->
+            <fieldset data-if="is_closed == 0">
+              <legend class="icon-reply" data-i18n>{LNG_Reply}</legend>
+              <div>
+                <label for="helpdesk_comment" data-i18n>{LNG_Message}</label>
+                <span class="form-control icon-comments">
+                  <textarea id="helpdesk_comment" name="comment" rows="5" placeholder="{LNG_BBCode support}" required></textarea>
+                </span>
+              </div>
+              <div>
+                <label for="helpdesk_files" data-i18n>{LNG_Attach file}</label>
+                <span class="form-control">
+                  <input type="file" id="helpdesk_files" name="helpdesk[]" multiple data-preview="true" data-attr="accept:accept">
+                </span>
+                <div class="comment" data-text="'{LNG_Browse image uploaded, type} ' + file_types + ' ({LNG_You can select multiple files}, {LNG_resized automatically})'" data-i18n></div>
+              </div>
+              <div class="form-group">
+                <div class="width50">
+                  <label for="helpdesk_status" data-i18n>{LNG_Status}</label>
+                  <span class="form-control icon-star0">
+                    <select id="helpdesk_status" name="status" data-options-key="status" data-attr="value:status"></select>
+                  </span>
+                </div>
+                <div class="width50" data-if="can_manage == 1">
+                  <label for="helpdesk_agent_id" data-i18n>{LNG_Assign to}</label>
+                  <span class="form-control icon-customer">
+                    <select id="helpdesk_agent_id" name="agent_id" data-options-key="agent_id" data-attr="value:agent_id"></select>
+                  </span>
+                </div>
+              </div>
+              <div data-if="is_agent == 1">
+                <label for="helpdesk_due_date" data-i18n>{LNG_Due Date}</label>
+                <span class="form-control icon-calendar">
+                  <input type="date" id="helpdesk_due_date" name="due_date" data-attr="value:due_date">
+                </span>
+              </div>
+              <div data-if="is_agent == 1">
+                <label class="helpdesk-inline">
+                  <input type="checkbox" class="switch" name="private" value="1">
+                  <span data-i18n>{LNG_Private}</span>
+                </label>
+                <div class="comment" data-i18n>{LNG_Internal note, not sent to the reporter}</div>
+              </div>
+            </fieldset>
+
+            <fieldset class="submit" data-if="is_closed == 0">
+              <button type="submit" class="btn btn-primary icon-reply" data-i18n>{LNG_Reply}</button>
+              <input type="hidden" name="helpdesk_id" data-attr="value:id">
+            </fieldset>
+          </div>
+        </div>
+      </form>
+    </main>
+  </div>
+  <footer class="footer">
+    <p class="center">&copy; 2026 Now.js - <a href="https://nowjs.net">nowjs.net</a></p>
+  </footer>
+</div>

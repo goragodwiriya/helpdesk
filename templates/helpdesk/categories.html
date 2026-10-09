@@ -1,0 +1,38 @@
+<aside data-component="sidebar"></aside>
+<div class="main-content">
+  <div>
+    <header data-component="topbar"></header>
+    <main class="content">
+      <form data-form="helpdeskCategories" action="api/helpdesk/categories/save" method="post" data-ajax-submit="true"
+            data-load-api="api/helpdesk/categories/get" data-load-query-params="true"
+            data-confirm="Confirm save" autocomplete="off">
+        <div class="card-groups">
+          <header>
+            <div>
+              <h1 class="icon-support" data-text="'{LNG_List of} ' + label" data-i18n></h1>
+              <p data-i18n>{LNG_Helpdesk}</p>
+            </div>
+          </header>
+          <div class="content-body">
+            <fieldset class="grid">
+              <div class="tablebody">
+                <table class="table border fullwidth" data-table="helpdeskCategories" data-editable-rows="true"
+                       data-attr="data:options" data-dynamic-columns="true">
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div class="comment" data-i18n>{LNG_ID is the value stored in the database. Changing it affects existing tickets.}</div>
+            </fieldset>
+            <fieldset class="submit">
+              <button type="submit" class="btn btn-primary icon-save" data-i18n>{LNG_Save}</button>
+              <input type="hidden" name="type" data-attr="value:type">
+            </fieldset>
+          </div>
+        </div>
+      </form>
+    </main>
+  </div>
+  <footer class="footer">
+    <p class="center">&copy; 2026 Now.js - <a href="https://nowjs.net">nowjs.net</a></p>
+  </footer>
+</div>
