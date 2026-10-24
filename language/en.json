@@ -1,0 +1,119 @@
+{
+    "BOOLEANS": [
+        "Disable",
+        "Enabled"
+    ],
+    "CHECK": "check",
+    "CHECKBOX": "Checkbox",
+    "DATE_FORMAT": "d M Y, H:i",
+    "DATE_LONG": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+    ],
+    "DATE_SHORT": [
+        "Su",
+        "Mo",
+        "Tu",
+        "We",
+        "Th",
+        "Fr",
+        "Sa"
+    ],
+    "DISABLE": "Disable",
+    "ENABLE": "Enable",
+    "HELPDESK_CATEGORIES": {
+        "category": "Category"
+    },
+    "HELPDESK_STATUSES": {
+        "ticketstatus": "Status",
+        "ticketpriority": "Priority"
+    },
+    "INVALID_DATA": "XXX Invalid data",
+    "INVENTORY_METAS": {
+        "detail": "Detail"
+    },
+    "INVENTORY_STATUS": [
+        "Inactive",
+        "Active"
+    ],
+    "LINE_REPLY_MESSAGE": "Sorry, can&#039;t reply to this message.",
+    "LOGIN_FIELDS": {
+        "username": "Username",
+        "email": "Email",
+        "phone": "Phone",
+        "id_card": "Identification No."
+    },
+    "MAIL_PROGRAMS": [
+        "Send with PHP",
+        "Send with PHPMailer+SMTP (recommended)",
+        "Send with PHPMailer+PHP Mail"
+    ],
+    "MONTH_LONG": {
+        "1": "January",
+        "2": "February",
+        "3": "March",
+        "4": "April",
+        "5": "May",
+        "6": "June",
+        "7": "July",
+        "8": "August",
+        "9": "September",
+        "10": "October",
+        "11": "November",
+        "12": "December"
+    },
+    "MONTH_SHORT": {
+        "1": "Jan",
+        "2": "Feb",
+        "3": "Mar",
+        "4": "Apr",
+        "5": "May",
+        "6": "Jun",
+        "7": "Jul",
+        "8": "Aug",
+        "9": "Sep",
+        "10": "Oct",
+        "11": "Nov",
+        "12": "Dec"
+    },
+    "now": "Just now",
+    "PLEASE_BROWSE_FILE": "Please browse file",
+    "PLEASE_FILL_IN": "Please fill in",
+    "PLEASE_SAVE_BEFORE_CONTINUING": "Please save before continuing",
+    "PLEASE_SELECT": "Please select",
+    "PLEASE_SELECT_AT_LEAST_ONE_ITEM": "Please select XXX at least one item",
+    "PUBLISHEDS": [
+        "Unpublished",
+        "Published"
+    ],
+    "SELECT_NONE": "select none",
+    "SEXES": {
+        "u": "Not specified",
+        "f": "Female",
+        "m": "Male"
+    },
+    "SMS_SENDER_COMMENT": "Some packages may not be able to assign the sender name. Please check with the service provider.",
+    "SMTPSECURIES": {
+        "": "Clear Text",
+        "ssl": "Server using a secure connection (SSL)"
+    },
+    "SORRY_XXX_NOT_FOUND": "Sorry XXX not found",
+    "SUCCESSFULLY_COPIED_TO_CLIPBOARD": "Successfully copied to clipboard",
+    "SUCCESSFULLY_UPLOADED_XXX_FILES": "Successfully uploaded XXX files",
+    "THE_TYPE_OF_FILE_IS_INVALID": "The type of file is invalid",
+    "THEME_WIDTH": {
+        "default": "Default",
+        "wide": "Wide",
+        "fullwidth": "Extra wide"
+    },
+    "TIME_FORMAT": "H:i",
+    "UNCHECK": "uncheck",
+    "YEAR_OFFSET": 0,
+    "YOU_WANT_TO_XXX": "You want to XXX ?",
+    "YOU_WANT_TO_XXX_THE_SELECTED_ITEMS": "You want to XXX the selected items ?"
+}
