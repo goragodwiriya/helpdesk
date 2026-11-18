@@ -1,0 +1,29 @@
+<div class="card-groups">
+  <header>
+    <div>
+      <h1 class="icon-list" data-i18n>{LNG_My tickets}</h1>
+      <p data-i18n>{LNG_List of} {LNG_Tickets} {LNG_that you have reported}</p>
+    </div>
+    <div>
+      <a class="btn btn-primary icon-new" href="/helpdesk-receive?id=0" data-i18n>{LNG_Create ticket}</a>
+    </div>
+  </header>
+  <div class="content-body">
+    <div class="tablebody">
+      <table class="table border fullwidth helpdesk-table" data-table="helpdeskTickets" data-source="api/helpdesk/tickets"
+             data-default-sort="updated_at desc" data-page-size="25" data-search-columns="ticket_no,subject" data-search-placeholder="{LNG_Search}...">
+        <thead>
+          <tr>
+            <th data-field="created_at" data-filter="true" data-type="daterange" data-range-names="from,to" data-range-presets="today,7d,30d,thismonth,lastmonth" data-hidden="true" data-i18n>{LNG_Date}</th>
+            <th data-field="category" data-filter="true" data-type="select" data-show-all="true" data-all-value="" data-hidden="true" data-i18n>{LNG_Category}</th>
+            <th data-field="priority" data-filter="true" data-type="select" data-show-all="true" data-all-value="" data-hidden="true" data-i18n>{LNG_Priority}</th>
+            <th data-field="subject" data-sort="subject" data-formatter="formatHelpdeskSubject" data-i18n>{LNG_Ticket}</th>
+            <th data-field="status" data-sort="status" class="right" data-cell-class="top right nowrap" data-filter="true" data-type="select" data-show-all="true" data-all-value=""
+                data-formatter="formatHelpdeskStatus" data-i18n>{LNG_Status}</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
